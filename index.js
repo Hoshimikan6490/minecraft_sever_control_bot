@@ -1,4 +1,3 @@
-var kill = require("tree-kill");
 var spawn = require("child_process").spawn;
 const { Client, GatewayIntentBits } = require("discord.js");
 require("dotenv").config();
@@ -19,7 +18,9 @@ const token = process.env.bot_token;
 const mc_pas = process.env.mcServer_pass;
 
 client.on("ready", () => {
-  console.log("Bot online!");
+  client.channels.cache.get("1160762387230638151").send("起動しました！");
+
+  console.log("Botを起動しました!");
 });
 
 client.on("messageCreate", async (message) => {
@@ -29,7 +30,7 @@ client.on("messageCreate", async (message) => {
   const command = args.shift().toLowerCase();
 
   if (command == "start") {
-    console.log("Attempting to start server.");
+    console.log("🔄️BOTを起動中です...");
     // Only start if not running
     if (mcServer == null) {
       if (client.uptime - lastMsgTime < 0) {
@@ -69,7 +70,9 @@ client.on("messageCreate", async (message) => {
 
           // Stop the server
           if (mcServer != null) {
-            kill(mcServer.pid);
+            mcServer.stdin.setEncoding("utf-8");
+            mcServer.stdin.write("stop\n");
+            mcServer.stdin.end();
           }
 
           mcServer = null;
@@ -94,7 +97,9 @@ client.on("messageCreate", async (message) => {
         message.channel.send("Force-stopping Minecraft server...");
 
         // Stop the server
-        kill(mcServer.pid);
+        mcServer.stdin.setEncoding("utf-8");
+        mcServer.stdin.write("stop\n");
+        mcServer.stdin.end();
 
         mcServer = null;
       }
