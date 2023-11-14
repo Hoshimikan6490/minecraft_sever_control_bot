@@ -5,6 +5,7 @@ require("dotenv").config();
 const util = require("util");
 const wait = util.promisify(setTimeout);
 const fs = require("fs");
+const kill = require("tree-kill");
 
 // Discord.jsパッケージの初期設定
 const client = new Client({
@@ -107,6 +108,24 @@ client.on("messageCreate", async (message) => {
         } else {
           message.channel.send("マイクラサーバーは既に稼働中です。");
         }
+      } else if (command == "command") {
+        if (client.uptime - lastMsgTime < 0) {
+          console.log(
+            `${message.author.username}より、スパムの可能性のあるメッセージを受信しました。`
+          );
+          message.channel.send(
+            "このコマンドは、スパムの可能性があるメッセージとして感知されました。数分後にもう一度お試しください。"
+          );
+        } else {
+          lastMsgTime = client.uptime;
+
+          // Only run if running
+          if (mcServer != null) {
+            mcServer.stdin.setEncoding("utf-8");
+            mcServer.stdin.write(args);
+            mcServer.stdin.end();
+          }
+        }
       } else if (command == "stop") {
         if (client.uptime - lastMsgTime < 0) {
           console.log(
@@ -126,6 +145,24 @@ client.on("messageCreate", async (message) => {
             mcServer.stdin.setEncoding("utf-8");
             mcServer.stdin.write("stop\n");
             mcServer.stdin.end();
+
+            mcServer = null;
+          }
+        }
+      } else if (command == "KILL SERVER") {
+        if (client.uptime - lastMsgTime < 0) {
+          console.log(
+            `${message.author.username}より、スパムの可能性のあるメッセージを受信しました。`
+          );
+          message.channel.send(
+            "このコマンドは、スパムの可能性があるメッセージとして感知されました。数分後にもう一度お試しください。"
+          );
+        } else {
+          lastMsgTime = client.uptime;
+          // Only stop if running
+          if (mcServer != null) {
+            message.channel.send("サーバーを強制停止中…")
+            kill(mcServer.pid);
 
             mcServer = null;
           }
