@@ -122,7 +122,7 @@ client.on("messageCreate", async (message) => {
           // Only run if running
           if (mcServer != null) {
             mcServer.stdin.setEncoding("utf-8");
-            mcServer.stdin.write(args);
+            mcServer.stdin.write(args.toString());
             mcServer.stdin.end();
           }
         }
@@ -161,7 +161,7 @@ client.on("messageCreate", async (message) => {
           lastMsgTime = client.uptime;
           // Only stop if running
           if (mcServer != null) {
-            message.channel.send("サーバーを強制停止中…")
+            message.channel.send("サーバーを強制停止中…");
             kill(mcServer.pid);
 
             mcServer = null;
