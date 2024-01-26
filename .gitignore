@@ -1,2 +1,5 @@
+minecraft_server_data/*
+!minecraft_server_data/PUT_SERVER_FILES_HERE
+
 node_modules
 .env
