@@ -122,8 +122,8 @@ client.on("messageCreate", async (message) => {
           // Only run if running
           if (mcServer != null) {
             mcServer.stdin.setEncoding("utf-8");
-            mcServer.stdin.write(args.toString());
-            mcServer.stdin.end();
+            let mes = message.content.split(" ").slice(1).join(" ");
+            mcServer.stdin.write(`${mes}\n`);
           }
         }
       } else if (command == "stop") {
