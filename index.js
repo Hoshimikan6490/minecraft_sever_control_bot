@@ -2,8 +2,6 @@
 var spawn = require("child_process").spawn;
 const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
 require("dotenv").config();
-const util = require("util");
-const wait = util.promisify(setTimeout);
 const fs = require("fs");
 const kill = require("tree-kill");
 
@@ -170,17 +168,19 @@ client.on("messageCreate", async (message) => {
       }
     } else {
       let rep = message.reply(`<#${consoleChannelID}> で実行してください。`);
-      await wait(7500);
-      (await rep).delete();
-      message.delete();
+      setTimeout(async () => {
+        (await rep).delete();
+        message.delete();
+      }, 7500);
     }
   } else {
     let rep = message.reply(
       "申し訳ございません。このBOTのコマンドは このBOTのオーナーが設定したユーザーのみが使用できます。詳細は、このBOTを導入したユーザーにお尋ねください。\n※あなたがBOTを導入したユーザーの場合は、__**[サポートサーバー](https://discord.gg/uYYaVRuUuJ)**__よりお尋ねください。"
     );
-    await wait(7500);
-    (await rep).delete();
-    message.delete();
+    setTimeout(async () => {
+      (await rep).delete();
+      message.delete();
+    }, 7500);
   }
 });
 
