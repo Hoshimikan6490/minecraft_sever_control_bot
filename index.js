@@ -31,7 +31,7 @@ client.on("ready", () => {
   setInterval(
     () =>
       client.user.setActivity({
-        name: `所属サーバー数は${client.guilds.cache.size} | McCon$startで開始。McCon$stopで停止。`,
+        name: `所属サーバー数は${client.guilds.cache.size} | ${prefix}startで開始。${prefix}command <コマンドの内容>で、マイクラ鯖にコマンドを送信。${prefix}stopで停止。`,
         type: ActivityType.Watching,
       }),
     10000
