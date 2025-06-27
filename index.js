@@ -1,7 +1,7 @@
 //パッケージの指定
 var spawn = require("child_process").spawn;
 const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
-require("dotenv").config();
+require("dotenv").config({ quiet: true });
 const fs = require("fs");
 const kill = require("tree-kill");
 
