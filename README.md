@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > このリポジトリは、メンテナンスを終了しました。
 > このコードは自由に活用できますが、動作の保証は致しません。
-> ご不明な手は<u>[私のホームページ](https://hoshimikan6490.com)</u>よりお問い合わせください。
+> ご不明な点は<u>[私のホームページ](https://hoshimikan6490.com)</u>よりお問い合わせください。
 
 > [!TIP]
 > 統合版(BE版)マインクラフトのサーバー管理に関しては、Ubuntuの場合 [こちらのリポジトリ](https://github.com/Hoshimikan6490/ubuntu-minecraft-BE-control-script) に記載されたshファイルを使用すると、screenコマンドを使って簡単に管理出来ます。よろしければそちらもぜひご利用ください。
