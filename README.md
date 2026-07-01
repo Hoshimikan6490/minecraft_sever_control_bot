@@ -1,5 +1,13 @@
 # Minecraft Server Control Discord BOT
 
+> [!IMPORTANT]
+> このリポジトリは、メンテナンスを終了しました。
+> このコードは自由に活用できますが、動作の保証は致しません。
+> ご不明な手は<u>[私のホームページ](https://hoshimikan6490.com)</u>よりお問い合わせください。
+
+> [!TIP]
+> 統合版(BE版)マインクラフトのサーバー管理に関しては、Ubuntuの場合 [こちらのリポジトリ](https://github.com/Hoshimikan6490/ubuntu-minecraft-BE-control-script) に記載されたshファイルを使用すると、screenコマンドを使って簡単に管理出来ます。よろしければそちらもぜひご利用ください。
+
 ## 概要
 
 このプログラムは、Minecraft サーバーを Discord の BOT 上から実行できるようにするためのものです。
@@ -18,7 +26,7 @@
 2. `npm i`を実行する。
 3. 「.env」という名前のファイル(カギ括弧は不要)を作成し、その中に「.env-example」の中身をコピペする。
 4. 「.env」にコピペした内容の内、「PLEASE_REPLACE_TO_YOUR_BOT_TOKEN」の部分をあなたが使用する Discord BOT の Token に書き換える。  
-   ※詳しい取得方法等は、ご自身でお調べください。万が一分からない場合は、本 repository の issue や<u>[サポートサーバー](https://discord.gg/uYYaVRuUuJ)</u>にてお尋ねください。
+   ※詳しい取得方法等は、ご自身でお調べください。万が一分からない場合は、本 repository の issue や<u>[私のホームページ](https://hoshimikan6490.com)</u>にてお尋ねください。
 5. `config.json`の中身を設定する
 
 ```json
